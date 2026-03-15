@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, Mail, MapPin, Facebook, Youtube, Instagram, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Youtube, Instagram, ArrowUpRight, Menu } from "lucide-react";
 
 export default function Home() {
   return (
@@ -7,8 +7,8 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md text-white">
         <div className="container mx-auto px-4">
-          {/* Top Bar */}
-          <div className="flex items-center justify-between py-2 text-sm">
+          {/* Top Bar - Hidden on mobile */}
+          <div className="hidden md:flex items-center justify-between py-2 text-sm">
             <div className="flex items-center gap-4">
               <span>Баясаа Танг ХХК вэб сайтад тавтай морил </span>
             </div>
@@ -29,18 +29,19 @@ export default function Home() {
             </div>
           </div>
           
-          {/* White Separator */}
-          <div className="border-t border-white/20"></div>
+          {/* White Separator - Hidden on mobile */}
+          <div className="hidden md:block border-t border-white/20"></div>
           
           {/* Navigation */}
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center justify-between py-3 md:py-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-xl font-bold text-black">L</span>
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center">
+                <span className="text-lg md:text-xl font-bold text-black">L</span>
               </div>
-              <span className="text-xl font-bold">Logolpsum</span>
+              <span className="text-lg md:text-xl font-bold">Logolpsum</span>
             </div>
-            <div className="flex items-center gap-8 text-sm font-medium">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-4 xl:gap-8 text-sm font-medium">
               <a href="#" className="hover:text-green-400 transition-colors">НҮҮР</a>
               <a href="#" className="hover:text-green-400 transition-colors">БҮТЭЭГДЭХҮҮН</a>
               <a href="#" className="hover:text-green-400 transition-colors">БИДНИЙ ТУХАЙ</a>
@@ -48,16 +49,20 @@ export default function Home() {
               <a href="#" className="hover:text-green-400 transition-colors">ХОЛБОО БАРИХ</a>
               <a href="#" className="hover:text-green-400 transition-colors">ХЭРЭГЛЭГЧИЙН ХУУДАС</a>
             </div>
+            {/* Mobile Menu Button */}
+            <button className="lg:hidden p-2">
+              <Menu className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&h=900&fit=crop')"}}>
+      <section className="relative h-[60vh] md:h-[70vh] lg:h-[80vh] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&h=900&fit=crop')"}}>
         <div className="absolute inset-0 bg-black/30"></div>
-        <div className="relative container mx-auto px-4 h-full flex items-center pt-[106px]">
+        <div className="relative container mx-auto px-4 h-full flex items-center pt-[60px] md:pt-[106px]">
           <div className="text-white max-w-2xl">
-            <h1 className="text-5xl font-bold mb-4 leading-tight font-[family-name:var(--font-noto-serif)]">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight font-[family-name:var(--font-noto-serif)]">
               ТАРИАЛАНЧИДДАА ХҮЧ НЭМБЭ<br />
               — ХАМТДАА УРГАЦЫН БАЯРЫГ ҮГТАЦГААЯ!
             </h1>
@@ -66,10 +71,10 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-8 md:py-12 lg:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12">ОНЦЛОХ БҮТЭЭГДЭХҮҮНҮҮД</h2>
-          <div className="grid grid-cols-5 gap-6 mb-8">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-12">ОНЦЛОХ БҮТЭЭГДЭХҮҮНҮҮД</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-8">
             {/* Product 1 - Tractor */}
             <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
               <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Трактор</span>
@@ -149,32 +154,32 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-8 md:py-12 lg:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12">ХАМТРАГЧ БАЙГУУЛЛАГУУД</h2>
-          <div className="space-y-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-12">ХАМТРАГЧ БАЙГУУЛЛАГУУД</h2>
+          <div className="space-y-6 md:space-y-12">
             {/* First Row - 5 logos */}
-            <div className="grid grid-cols-5 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="flex items-center justify-center">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
-                      <span className="text-white text-lg font-bold">L</span>
+                    <div className="w-6 h-6 md:w-8 md:h-8 bg-green-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm md:text-lg font-bold">L</span>
                     </div>
-                    <span className="text-base font-semibold">Logolpsum</span>
+                    <span className="text-sm md:text-base font-semibold">Logolpsum</span>
                   </div>
                 </div>
               ))}
             </div>
             {/* Second Row - 4 logos */}
-            <div className="grid grid-cols-5 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
               {[6, 7, 8, 9].map((i) => (
                 <div key={i} className="flex items-center justify-center">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                      <span className="text-white text-lg font-bold">L</span>
+                    <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm md:text-lg font-bold">L</span>
                     </div>
-                    <span className="text-base font-semibold">Logolpsum</span>
+                    <span className="text-sm md:text-base font-semibold">Logolpsum</span>
                   </div>
                 </div>
               ))}
@@ -184,24 +189,24 @@ export default function Home() {
       </section>
 
       {/* Feature Section - Greenhouse */}
-      <section className="relative h-[600px] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=600&fit=crop')"}}>
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=600&fit=crop')"}}>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="text-white max-w-2xl">
-            <span className="text-sm font-medium mb-4 block">ДЭЛХИЙ ДАХИНЫ</span>
-            <h2 className="text-4xl font-bold mb-6">
+            <span className="text-xs md:text-sm font-medium mb-2 md:mb-4 block">ДЭЛХИЙ ДАХИНЫ</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
               Оюу Толгой ХХК-ийн<br />
               Мод Үржүүлгийн<br />
               Газар
             </h2>
-            <p className="mb-6 text-lg leading-relaxed">
-              БЗДс- Монгол улсын баялаг эрдэс<br />
-              бүхий бүсэд байрладаг. Манай компани<br />
-              нүүл 2026 оны 4-р улиралаас<br />
-              эхэлж хүлээн авч ургуулах ажлыг<br />
+            <p className="mb-4 md:mb-6 text-sm md:text-lg leading-relaxed">
+              БЗДс- Монгол улсын баялаг эрдэс<br className="hidden md:block" />
+              бүхий бүсэд байрладаг. Манай компани<br className="hidden md:block" />
+              нүүл 2026 оны 4-р улиралаас<br className="hidden md:block" />
+              эхэлж хүлээн авч ургуулах ажлыг<br className="hidden md:block" />
               эхлүүлэх болно.
             </p>
-            <button className="bg-green-600 text-white px-8 py-3 rounded hover:bg-green-700">
+            <button className="bg-green-600 text-white px-6 md:px-8 py-2 md:py-3 rounded hover:bg-green-700 text-sm md:text-base">
               Дэлгэрэнгүй →
             </button>
           </div>
@@ -209,9 +214,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-100 py-12">
+      <footer className="bg-gray-100 py-8 md:py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-3 gap-12 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-8">
             {/* Column 1 - About */}
             <div>
               <div className="flex items-center gap-2 mb-6">
