@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Phone, Mail, MapPin, Facebook, Youtube, Instagram, ArrowUpRight, Menu } from "lucide-react";
+import Link from "next/link";
+import { Phone, Mail, MapPin, Facebook, Youtube, ArrowUpRight, Menu } from "lucide-react";
 
 export default function Home() {
   return (
@@ -9,22 +10,22 @@ export default function Home() {
         <div className="container mx-auto px-4">
           {/* Top Bar - Hidden on mobile */}
           <div className="hidden md:flex items-center justify-between py-2 text-sm">
-            <div className="flex items-center gap-4">
-              <span>Баясаа Танг ХХК вэб сайтад тавтай морил </span>
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              <span>+976 91912205</span>
             </div>
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-4">
-                <Facebook className="w-4 h-4" />
-                <Youtube className="w-4 h-4" />
-                <Instagram className="w-4 h-4" />
-              </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>Logolpsum@gmail.com</span>
+                <span>Baysaa.tang.company@gmail.com</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                <span>+976 91012345</span>
+              <div className="flex items-center gap-4">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
+                  <Youtube className="w-4 h-4" />
+                </a>
               </div>
             </div>
           </div>
@@ -35,19 +36,16 @@ export default function Home() {
           {/* Navigation */}
           <div className="flex items-center justify-between py-3 md:py-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-lg md:text-xl font-bold text-black">L</span>
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-green-600 rounded-full flex items-center justify-center">
+                <span className="text-lg md:text-xl font-bold text-white">БТ</span>
               </div>
-              <span className="text-lg md:text-xl font-bold">Logolpsum</span>
+              <span className="text-lg md:text-xl font-bold">Баясаа Танг</span>
             </div>
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-8 text-sm font-medium">
-              <a href="#" className="hover:text-green-400 transition-colors">НҮҮР</a>
-              <a href="#" className="hover:text-green-400 transition-colors">БҮТЭЭГДЭХҮҮН</a>
-              <a href="#" className="hover:text-green-400 transition-colors">БИДНИЙ ТУХАЙ</a>
-              <a href="#" className="hover:text-green-400 transition-colors">ХАМТРАН АЖИЛ</a>
-              <a href="#" className="hover:text-green-400 transition-colors">ХОЛБОО БАРИХ</a>
-              <a href="#" className="hover:text-green-400 transition-colors">ХЭРЭГЛЭГЧИЙН ХУУДАС</a>
+              <a href="/" className="hover:text-green-400 transition-colors">НҮҮР</a>
+              <a href="/products" className="hover:text-green-400 transition-colors">БҮТЭЭГДЭХҮҮН</a>
+              <a href="/about" className="hover:text-green-400 transition-colors">БИДНИЙ ТУХАЙ</a>
             </div>
             {/* Mobile Menu Button */}
             <button className="lg:hidden p-2">
@@ -63,8 +61,8 @@ export default function Home() {
         <div className="relative container mx-auto px-4 h-full flex items-center pt-[60px] md:pt-[106px]">
           <div className="text-white max-w-2xl">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight font-[family-name:var(--font-noto-serif)]">
-              ТАРИАЛАНЧИДДАА ХҮЧ НЭМБЭ<br />
-              — ХАМТДАА УРГАЦЫН БАЯРЫГ ҮГТАЦГААЯ!
+              Тариаланчиддаа хүч нэмье<br />
+              – хамтдаа ургацын баярыг угтацгаая!
             </h1>
           </div>
         </div>
@@ -76,113 +74,160 @@ export default function Home() {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-12">ОНЦЛОХ БҮТЭЭГДЭХҮҮНҮҮД</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-8">
             {/* Product 1 - Tractor */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-              <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Трактор</span>
-              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&h=300&fit=crop" alt="Трактор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <ArrowUpRight className="w-8 h-8 text-green-600" />
+            <Link href="/product/1">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
+                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Трактор</span>
+                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&h=300&fit=crop" alt="Трактор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                    <ArrowUpRight className="w-8 h-8 text-green-600" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
+                  Трактор
                 </div>
               </div>
-              <button className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium hover:bg-green-700">
-                Трактор
-              </button>
-            </div>
+            </Link>
 
             {/* Product 2 - Generator */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-              <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Цахилгаан үүсгүүр</span>
-              <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=300&h=300&fit=crop" alt="Генератор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <ArrowUpRight className="w-8 h-8 text-green-600" />
+            <Link href="/product/6">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
+                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Ургац хураагч</span>
+                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=300&h=300&fit=crop" alt="Комбайн" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                    <ArrowUpRight className="w-8 h-8 text-green-600" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
+                  Ургац хураагч
                 </div>
               </div>
-              <button className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium hover:bg-green-700">
-                Цахилгаан үүсгүүр
-              </button>
-            </div>
+            </Link>
 
-            {/* Product 3 - Harvester */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-              <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Хураагч</span>
-              <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=300&h=300&fit=crop" alt="Комбайн" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <ArrowUpRight className="w-8 h-8 text-green-600" />
+            {/* Product 3 - Seeder */}
+            <Link href="/product/9">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
+                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Үрлэгч</span>
+                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&h=300&fit=crop" alt="Үрлэгч" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                    <ArrowUpRight className="w-8 h-8 text-green-600" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
+                  Үрлэгч
                 </div>
               </div>
-              <button className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium hover:bg-green-700">
-                Хураагч
-              </button>
-            </div>
+            </Link>
 
             {/* Product 4 - Tractor 2 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-              <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Трактор</span>
-              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&h=300&fit=crop" alt="Трактор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <ArrowUpRight className="w-8 h-8 text-green-600" />
+            <Link href="/product/2">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
+                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Трактор</span>
+                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&h=300&fit=crop" alt="Трактор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                    <ArrowUpRight className="w-8 h-8 text-green-600" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
+                  Трактор
                 </div>
               </div>
-              <button className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium hover:bg-green-700">
-                Трактор
-              </button>
-            </div>
+            </Link>
 
-            {/* Product 5 - Generator 2 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-              <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Цахилгаан үүсгүүр</span>
-              <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=300&h=300&fit=crop" alt="Генератор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <ArrowUpRight className="w-8 h-8 text-green-600" />
+            {/* Product 5 - Soil Equipment */}
+            <Link href="/product/11">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
+                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Хөрс боловсруулах</span>
+                <img src="https://images.unsplash.com/photo-1591088741926-d65b2ea79f94?w=300&h=300&fit=crop" alt="Хөрс боловсруулах" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                    <ArrowUpRight className="w-8 h-8 text-green-600" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
+                  Хөрс боловсруулах
                 </div>
               </div>
-              <button className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium hover:bg-green-700">
-                Цахилгаан үүсгүүр
-              </button>
-            </div>
+            </Link>
           </div>
           <div className="text-center">
-            <a href="#" className="inline-flex items-center gap-2 text-sm font-medium hover:underline">
+            <Link href="/products" className="inline-flex items-center gap-2 text-sm font-medium hover:underline">
               Цааш үзэх →
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Partners Section */}
-      <section className="py-8 md:py-12 lg:py-16 bg-gray-100">
+      <section className="py-8 md:py-12 lg:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-12">ХАМТРАГЧ БАЙГУУЛЛАГУУД</h2>
-          <div className="space-y-6 md:space-y-12">
-            {/* First Row - 5 logos */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="flex items-center justify-center">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 md:w-8 md:h-8 bg-green-600 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm md:text-lg font-bold">L</span>
-                    </div>
-                    <span className="text-sm md:text-base font-semibold">Logolpsum</span>
-                  </div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-12 text-center">ХАМТРАГЧ БАЙГУУЛЛАГУУД</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 md:gap-8 items-center justify-items-center">
+            {/* FMWorld */}
+            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
+              <div className="text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white text-xs md:text-sm font-bold">FM</span>
                 </div>
-              ))}
+                <span className="text-xs md:text-sm font-medium">FMWorld</span>
+              </div>
             </div>
-            {/* Second Row - 4 logos */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
-              {[6, 7, 8, 9].map((i) => (
-                <div key={i} className="flex items-center justify-center">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm md:text-lg font-bold">L</span>
-                    </div>
-                    <span className="text-sm md:text-base font-semibold">Logolpsum</span>
-                  </div>
+            {/* Anhui Yimutian */}
+            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
+              <div className="text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white text-xs md:text-sm font-bold">AY</span>
                 </div>
-              ))}
+                <span className="text-xs md:text-sm font-medium">Anhui Yimutian</span>
+              </div>
+            </div>
+            {/* Massey Ferguson */}
+            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
+              <div className="text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-red-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white text-xs md:text-sm font-bold">MF</span>
+                </div>
+                <span className="text-xs md:text-sm font-medium">Massey Ferguson</span>
+              </div>
+            </div>
+            {/* YTO */}
+            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
+              <div className="text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white text-xs md:text-sm font-bold">YTO</span>
+                </div>
+                <span className="text-xs md:text-sm font-medium">YTO</span>
+              </div>
+            </div>
+            {/* John Deere */}
+            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
+              <div className="text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white text-xs md:text-sm font-bold">JD</span>
+                </div>
+                <span className="text-xs md:text-sm font-medium">John Deere</span>
+              </div>
+            </div>
+            {/* Dongfeng */}
+            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
+              <div className="text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-800 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white text-xs md:text-sm font-bold">DF</span>
+                </div>
+                <span className="text-xs md:text-sm font-medium">Dongfeng</span>
+              </div>
+            </div>
+            {/* Zoomlion */}
+            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
+              <div className="text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-500 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-white text-xs md:text-sm font-bold">ZL</span>
+                </div>
+                <span className="text-xs md:text-sm font-medium">Zoomlion</span>
+              </div>
             </div>
           </div>
         </div>
@@ -214,80 +259,94 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-100 py-8 md:py-12">
+      <footer className="bg-gray-900 text-white py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-8">
-            {/* Column 1 - About */}
+            {/* Column 1 - Products */}
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xl font-bold">L</span>
-                </div>
-                <span className="text-xl font-bold">Logolpsum</span>
-              </div>
-              <h3 className="font-bold mb-4">БҮТЭЭГДЭХҮҮН</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-green-600">Трактор</a></li>
-                <li><a href="#" className="hover:text-green-600">Үр үс, үржүүлгийн төхөөр</a></li>
-                <li><a href="#" className="hover:text-green-600">Үрийн</a></li>
-                <li><a href="#" className="hover:text-green-600">Тариалангийн машин</a></li>
-                <li><a href="#" className="hover:text-green-600">ХАА-н дагалдах хэрэгсэл</a></li>
-                <li><a href="#" className="hover:text-green-600">Ус зайлуулах хоолой</a></li>
-                <li><a href="#" className="hover:text-green-600">Хүлэмж</a></li>
+              <h3 className="font-bold mb-4 text-green-400">БҮТЭЭГДЭХҮҮН</h3>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li><a href="#" className="hover:text-green-400 transition-colors">Трактор</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Ургац хураалтын техник</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Үрлэгч</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Хөрс боловсруулах техник</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Шүршигч төхөөрөмж</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">ХАА-н дагалдах тоног төхөөрөмж</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Үр тариа хатаах төхөөрөмж</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Өвс, тэжээл бэлтгэх техник</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Экскаватор</a></li>
               </ul>
             </div>
 
-            {/* Column 2 - Contact */}
+            {/* Column 2 - Branches */}
             <div>
-              <h3 className="font-bold mb-4">САЛБАР</h3>
-              <div className="space-y-4 text-sm">
+              <h3 className="font-bold mb-4 text-green-400">САЛБАР</h3>
+              <div className="space-y-4 text-sm text-gray-300">
                 <div>
-                  <p className="font-medium mb-2">Төв салбар</p>
-                  <p className="text-gray-600">
-                    Монгол Улс, Улаанбаатар хот, Сүхбаатар дүүрэг, 1-р хороо, Энхтайваны өргөн чөлөө, Блю Скай тауэр, 17 давхар, 1702 тоот
+                  <p className="font-medium mb-1 flex items-center gap-1">
+                    <MapPin className="w-4 h-4 text-green-400" />
+                    Улаанбаатар
                   </p>
+                  <p className="text-gray-400 ml-5">
+                    СХД, Моносын уулзвараас 22-ын товчоо чиглэлд 600 метр, Чандмань Бар худалдааны төв
+                  </p>
+                  <p className="text-gray-400 ml-5">Утас: 91912205</p>
                 </div>
                 <div>
-                  <p className="font-medium mb-2">Үйлдвэрийн салбар</p>
-                  <p className="text-gray-600">
-                    Монгол Улсын Хөвсгөл аймаг, Их Тэнгэр сум, Тэнгэрийн Хөндий
+                  <p className="font-medium mb-1 flex items-center gap-1">
+                    <MapPin className="w-4 h-4 text-green-400" />
+                    БНХАУ – Эрээн хот
                   </p>
+                  <p className="text-gray-400 ml-5">
+                    Их уул тариалан техникийн борлуулалтын төв
+                  </p>
+                  <p className="text-gray-400 ml-5">Утас: 1754896652</p>
                 </div>
                 <div>
-                  <p className="font-medium mb-2">Хятадын салбар</p>
-                  <p className="text-gray-600">
-                    Anhui Yinshan Agricultural Machinery Co.,LTD, Yinshan, 480088888
+                  <p className="font-medium mb-1 flex items-center gap-1">
+                    <MapPin className="w-4 h-4 text-green-400" />
+                    БНХАУ – Анхуй муж
                   </p>
+                  <p className="text-gray-400 ml-5">
+                    Anhui Yimutian Agricultural Machinery Co.,LTD
+                  </p>
+                  <p className="text-gray-400 ml-5">Утас: 1835682899</p>
                 </div>
               </div>
             </div>
 
-            {/* Column 3 - Info */}
+            {/* Column 3 - Contact */}
             <div>
-              <h3 className="font-bold mb-4">ХОЛБОО БАРИХ</h3>
-              <div className="space-y-3 text-sm">
+              <h3 className="font-bold mb-4 text-green-400">ХОЛБОО БАРИХ</h3>
+              <div className="space-y-3 text-sm text-gray-300">
                 <div className="flex items-center gap-2">
-                  <Facebook className="w-4 h-4" />
-                  <span>Facebook</span>
+                  <Phone className="w-4 h-4 text-green-400" />
+                  <span>+976 91912205</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Youtube className="w-4 h-4" />
-                  <span>Youtube</span>
+                  <Mail className="w-4 h-4 text-green-400" />
+                  <span>Baysaa.tang.company@gmail.com</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <span>Logolpsum@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <span>+976 91012345</span>
+                <div className="flex items-center gap-3 mt-4">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
+                    <Youtube className="w-5 h-5" />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="border-t pt-6 text-center text-sm text-gray-600">
-            <p>© 2025 "Baysaa Taa" ХХК, Бүх эрх хуулиар хамгаалагдсан.</p>
+          {/* Footer Bottom */}
+          <div className="border-t border-gray-700 pt-6">
+            <p className="text-center text-sm text-gray-400 mb-2">
+              FMWorld болон Anhui Yimutian Agricultural Machinery Co., Ltd компанийн Монгол дахь албан ёсны дилер
+            </p>
+            <p className="text-center text-sm text-gray-400">
+              © 2026 "Баясаа Танг" ХХК. Бүх эрх хуулиар хамгаалагдсан.
+            </p>
           </div>
         </div>
       </footer>
