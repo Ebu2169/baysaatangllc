@@ -1,8 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Youtube, ArrowUpRight, Menu } from "lucide-react";
+import { getFeaturedProducts } from "@/data/products";
+import type { ProductCategory } from "@/data/types";
+
+const categoryLabels: Record<ProductCategory, string> = {
+  tractor: "Трактор",
+  harvester: "Ургац хураалтын техник",
+  seeder: "Үрлэгч",
+  soil: "Хөрс боловсруулах техник",
+  sprayer: "Шүршигч төхөөрөмж",
+  equipment: "ХАА-н дагалдах тоног төхөөрөмж",
+  dryer: "Үр тариа хатаах төхөөрөмж",
+  hay: "Өвс, тэжээл бэлтгэх техник",
+  excavator: "Экскаватор",
+};
 
 export default function Home() {
+  const featuredProducts = getFeaturedProducts().slice(0, 5);
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -73,85 +88,29 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-12">ОНЦЛОХ БҮТЭЭГДЭХҮҮНҮҮД</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-8">
-            {/* Product 1 - Tractor */}
-            <Link href="/product/1">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Трактор</span>
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&h=300&fit=crop" alt="Трактор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                    <ArrowUpRight className="w-8 h-8 text-green-600" />
+            {featuredProducts.map((product) => (
+              <Link href={`/product/${product.id}`} key={product.id}>
+                <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
+                  <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">
+                    {categoryLabels[product.category]}
+                  </span>
+                  <Image 
+                    src={product.image} 
+                    alt={product.nameMn || product.name} 
+                    fill
+                    className="object-cover transition-all duration-300 group-hover:brightness-50" 
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                      <ArrowUpRight className="w-8 h-8 text-green-600" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center text-sm">
+                    {product.nameMn || product.name}
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
-                  Трактор
-                </div>
-              </div>
-            </Link>
-
-            {/* Product 2 - Generator */}
-            <Link href="/product/6">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Ургац хураагч</span>
-                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=300&h=300&fit=crop" alt="Комбайн" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                    <ArrowUpRight className="w-8 h-8 text-green-600" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
-                  Ургац хураагч
-                </div>
-              </div>
-            </Link>
-
-            {/* Product 3 - Seeder */}
-            <Link href="/product/9">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Үрлэгч</span>
-                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&h=300&fit=crop" alt="Үрлэгч" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                    <ArrowUpRight className="w-8 h-8 text-green-600" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
-                  Үрлэгч
-                </div>
-              </div>
-            </Link>
-
-            {/* Product 4 - Tractor 2 */}
-            <Link href="/product/2">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Трактор</span>
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&h=300&fit=crop" alt="Трактор" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                    <ArrowUpRight className="w-8 h-8 text-green-600" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
-                  Трактор
-                </div>
-              </div>
-            </Link>
-
-            {/* Product 5 - Soil Equipment */}
-            <Link href="/product/11">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
-                <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">Хөрс боловсруулах</span>
-                <img src="https://images.unsplash.com/photo-1591088741926-d65b2ea79f94?w=300&h=300&fit=crop" alt="Хөрс боловсруулах" className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                    <ArrowUpRight className="w-8 h-8 text-green-600" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 w-full bg-green-600 text-white py-3 font-medium text-center">
-                  Хөрс боловсруулах
-                </div>
-              </div>
-            </Link>
+              </Link>
+            ))}
           </div>
           <div className="text-center">
             <Link href="/products" className="inline-flex items-center gap-2 text-sm font-medium hover:underline">
@@ -162,73 +121,37 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-8 md:py-12 lg:py-16 bg-white">
+      <section className="py-8 md:py-12 lg:py-16 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-12 text-center">ХАМТРАГЧ БАЙГУУЛЛАГУУД</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 md:gap-8 items-center justify-items-center">
-            {/* FMWorld */}
-            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
-              <div className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white text-xs md:text-sm font-bold">FM</span>
+        </div>
+        <div className="relative w-full overflow-hidden group">
+          <div className="flex animate-scroll group-hover:[animation-play-state:paused]">
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex shrink-0">
+                <a href="https://www.fmworldagri.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 grayscale hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
+                  <Image src="/partner_logos/fmworldlogo.jpeg" alt="FMWorld" width={150} height={60} className="object-contain max-h-full max-w-full" />
+                </a>
+                <div className="flex items-center justify-center px-8 md:px-12 grayscale hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
+                  <Image src="/partner_logos/anhuilogo.jpeg" alt="Anhui Yimutian" width={150} height={60} className="object-contain max-h-full max-w-full" />
                 </div>
-                <span className="text-xs md:text-sm font-medium">FMWorld</span>
+                <a href="https://www.masseyferguson.com/en.html" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 grayscale hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
+                  <Image src="/partner_logos/fergielogo.png" alt="Massey Ferguson" width={150} height={60} className="object-contain max-h-full max-w-full" />
+                </a>
+                <a href="http://www.ytocorp.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 grayscale hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
+                  <Image src="/partner_logos/ytologo.jpeg" alt="YTO" width={180} height={80} className="object-contain max-h-[90%] max-w-[90%] scale-125" />
+                </a>
+                <a href="https://www.deere.com/en/index.html" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 grayscale hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
+                  <Image src="/partner_logos/JDlogo.png" alt="John Deere" width={150} height={60} className="object-contain max-h-full max-w-full" />
+                </a>
+                <a href="https://www.dongfeng-global.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 grayscale hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
+                  <Image src="/partner_logos/Dongfenglogo.png" alt="Dongfeng" width={150} height={60} className="object-contain max-h-full max-w-full" />
+                </a>
+                <a href="https://en.zoomlion.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 grayscale hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
+                  <Image src="/partner_logos/zoomlionlogo.png" alt="Zoomlion" width={150} height={60} className="object-contain max-h-full max-w-full" />
+                </a>
               </div>
-            </div>
-            {/* Anhui Yimutian */}
-            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
-              <div className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white text-xs md:text-sm font-bold">AY</span>
-                </div>
-                <span className="text-xs md:text-sm font-medium">Anhui Yimutian</span>
-              </div>
-            </div>
-            {/* Massey Ferguson */}
-            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
-              <div className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-red-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white text-xs md:text-sm font-bold">MF</span>
-                </div>
-                <span className="text-xs md:text-sm font-medium">Massey Ferguson</span>
-              </div>
-            </div>
-            {/* YTO */}
-            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
-              <div className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white text-xs md:text-sm font-bold">YTO</span>
-                </div>
-                <span className="text-xs md:text-sm font-medium">YTO</span>
-              </div>
-            </div>
-            {/* John Deere */}
-            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
-              <div className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white text-xs md:text-sm font-bold">JD</span>
-                </div>
-                <span className="text-xs md:text-sm font-medium">John Deere</span>
-              </div>
-            </div>
-            {/* Dongfeng */}
-            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
-              <div className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-800 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white text-xs md:text-sm font-bold">DF</span>
-                </div>
-                <span className="text-xs md:text-sm font-medium">Dongfeng</span>
-              </div>
-            </div>
-            {/* Zoomlion */}
-            <div className="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all">
-              <div className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-500 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white text-xs md:text-sm font-bold">ZL</span>
-                </div>
-                <span className="text-xs md:text-sm font-medium">Zoomlion</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
