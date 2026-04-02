@@ -126,21 +126,32 @@
 }
 
 /* Partner logo slider animation */
-@keyframes scroll {
+/* Mobile: 7 logos × 160px = 1120px per set */
+/* Desktop: 7 logos × 220px = 1540px per set */
+@keyframes scroll-mobile {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-1120px);
+  }
+}
+
+@keyframes scroll-desktop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1540px);
   }
 }
 
 .animate-scroll {
-  animation: scroll 12s linear infinite;
+  animation: scroll-mobile 20s linear infinite;
 }
 
 @media (min-width: 768px) {
   .animate-scroll {
-    animation: scroll 25s linear infinite;
+    animation: scroll-desktop 25s linear infinite;
   }
 }
