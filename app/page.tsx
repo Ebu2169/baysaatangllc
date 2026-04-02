@@ -90,7 +90,7 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-8">
             {featuredProducts.map((product) => (
               <Link href={`/product/${product.id}`} key={product.id}>
-                <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-200 aspect-square group cursor-pointer">
+                <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-gray-100 aspect-square group cursor-pointer p-3">
                   <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full z-10">
                     {categoryLabels[product.category]}
                   </span>
@@ -98,7 +98,7 @@ export default function Home() {
                     src={product.image} 
                     alt={product.nameMn || product.name} 
                     fill
-                    className="object-cover transition-all duration-300 group-hover:brightness-50" 
+                    className="object-contain transition-all duration-300 group-hover:brightness-50" 
                   />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">

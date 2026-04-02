@@ -198,12 +198,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               {relatedProducts.map((item) => (
                 <Link href={`/product/${item.id}`} key={item.id}>
                   <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-                    <div className="aspect-square bg-gray-100 relative overflow-hidden">
+                    <div className="aspect-square bg-gray-50 relative overflow-hidden p-3">
                       <Image 
                         src={item.image} 
                         alt={item.nameMn || item.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                        className="object-contain group-hover:scale-105 transition-transform duration-300" 
                       />
                     </div>
                     <div className="p-4">

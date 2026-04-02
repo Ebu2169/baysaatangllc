@@ -86,12 +86,12 @@ export default async function ProductsPage({
               <Link href={`/product/${product.id}`} key={product.id}>
                 <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
                   {/* Image */}
-                  <div className="aspect-square bg-gray-100 relative overflow-hidden">
+                  <div className="aspect-square bg-gray-50 relative overflow-hidden p-3">
                     <Image 
                       src={product.image} 
                       alt={product.nameMn || product.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                      className="object-contain group-hover:scale-105 transition-transform duration-300" 
                     />
                     <div className="absolute top-3 left-3">
                       <span className="bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-medium px-2 py-1 rounded">
