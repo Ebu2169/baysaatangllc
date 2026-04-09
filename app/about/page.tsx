@@ -9,12 +9,14 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero Banner */}
-      <section className="relative min-h-[300px] md:min-h-[350px] bg-cover bg-center flex items-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=600&fit=crop')", marginTop: "60px"}}>
+      <section className="relative min-h-[300px] md:min-h-[350px] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=600&fit=crop')"}}>
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative container mx-auto px-4 py-16">
-          <div className="text-white">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">БИДНИЙ ТУХАЙ</h1>
-            <p className="text-lg md:text-xl text-gray-200">Баясаа Танг ХХК - Газар тариалангийн техникийн найдвартай түнш</p>
+        <div className="absolute bottom-16 md:bottom-20 left-0 right-0">
+          <div className="container mx-auto px-4">
+            <div className="text-white">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">БИДНИЙ ТУХАЙ</h1>
+              <p className="text-lg md:text-xl text-gray-200">Баясаа Танг ХХК - Газар тариалангийн техникийн найдвартай түнш</p>
+            </div>
           </div>
         </div>
       </section>

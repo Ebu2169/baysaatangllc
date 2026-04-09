@@ -35,13 +35,18 @@ export default async function ProductsPage({
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      {/* Header Section */}
-      <div className="pt-[70px] md:pt-[100px] bg-white">
-        <div className="container mx-auto px-4 py-8 md:py-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Бүтээгдэхүүн</h1>
-          <p className="text-gray-600">Газар тариалангийн техник, тоног төхөөрөмж</p>
+      {/* Hero Section */}
+      <section className="relative min-h-[300px] md:min-h-[350px] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=600&fit=crop')"}}>
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute bottom-16 md:bottom-20 left-0 right-0">
+          <div className="container mx-auto px-4">
+            <div className="text-white">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">БҮТЭЭГДЭХҮҮН</h1>
+              <p className="text-lg md:text-xl text-gray-200">Газар тариалангийн техник, тоног төхөөрөмж</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Category Filter - Horizontal Scroll */}
       <div className="bg-white border-y sticky top-[60px] md:top-[100px] z-40">
