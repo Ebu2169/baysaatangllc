@@ -28,7 +28,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-bold mb-6">Тариаланчдын итгэлт түнш</h2>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                "Баясаа Танг" ХХК нь Монгол улсын газар тариалангийн салбарт тэргүүлэгч техник, тоног төхөөрөмж нийлүүлэгч компани юм. Бид FMWorld болон Anhui Yimutian Agricultural Machinery Co., Ltd компанийн Монгол дахь албан ёсны дилер бөгөөд дэлхийн шилдэг брэндүүдийн бүтээгдэхүүнийг харилцагчдадаа хүргэдэг.
+                &quot;Баясаа Танг&quot; ХХК нь Монгол улсын газар тариалангийн салбарт тэргүүлэгч техник, тоног төхөөрөмж нийлүүлэгч компани юм. Бид FMWorld болон Anhui Yimutian Agricultural Machinery Co., Ltd компанийн Монгол дахь албан ёсны дилер бөгөөд дэлхийн шилдэг брэндүүдийн бүтээгдэхүүнийг харилцагчдадаа хүргэдэг.
               </p>
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Манай зорилго бол Монголын тариаланчдад дэлхийн чанартай техник хэрэгслийг хүртээмжтэй үнээр хүргэж, тэдний үр бүтээмжийг дээшлүүлэхэд хувь нэмрээ оруулах явдал юм.
@@ -38,9 +38,11 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="relative">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=500&fit=crop" 
                 alt="Газар тариалан"
+                width={600}
+                height={500}
                 className="rounded-2xl shadow-xl w-full"
               />
               <div className="absolute -bottom-6 left-4 md:-left-6 bg-green-600 text-white p-4 md:p-6 rounded-xl shadow-lg">

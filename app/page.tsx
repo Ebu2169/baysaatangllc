@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Facebook, Youtube, ArrowUpRight, Menu } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { getFeaturedProducts } from "@/data/products";
 import type { ProductCategory } from "@/data/types";
 
@@ -20,55 +22,7 @@ export default function Home() {
   const featuredProducts = getFeaturedProducts().slice(0, 5);
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md text-white">
-        <div className="container mx-auto px-4">
-          {/* Top Bar - Hidden on mobile */}
-          <div className="hidden md:flex items-center justify-between py-2 text-sm">
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span>+976 91912205</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                <span>Baysaa.tang.company@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
-                  <Youtube className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          {/* White Separator - Hidden on mobile */}
-          <div className="hidden md:block border-t border-white/20"></div>
-          
-          {/* Navigation */}
-          <div className="flex items-center justify-between py-3 md:py-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 md:w-10 md:h-10 bg-green-600 rounded-full flex items-center justify-center">
-                <span className="text-lg md:text-xl font-bold text-white">БТ</span>
-              </div>
-              <span className="text-lg md:text-xl font-bold">Баясаа Танг</span>
-            </div>
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-8 text-sm font-medium">
-              <a href="/" className="hover:text-green-400 transition-colors">НҮҮР</a>
-              <a href="/products" className="hover:text-green-400 transition-colors">БҮТЭЭГДЭХҮҮН</a>
-              <a href="/about" className="hover:text-green-400 transition-colors">БИДНИЙ ТУХАЙ</a>
-            </div>
-            {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2">
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] lg:h-[80vh] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&h=900&fit=crop')"}}>
@@ -76,7 +30,7 @@ export default function Home() {
         <div className="relative container mx-auto px-4 h-full flex items-center pt-[60px] md:pt-[106px]">
           <div className="text-white max-w-2xl">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight font-[family-name:var(--font-noto-serif)]">
-              Тариаланчиддаа хүч нэмье<br />
+              Тариаланчдадаа хүч нэмье<br />
               – хамтдаа ургацын баярыг угтацгаая!
             </h1>
           </div>
@@ -181,98 +135,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 md:py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-8">
-            {/* Column 1 - Products */}
-            <div>
-              <h3 className="font-bold mb-4 text-green-400">БҮТЭЭГДЭХҮҮН</h3>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#" className="hover:text-green-400 transition-colors">Трактор</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Ургац хураалтын техник</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Үрлэгч</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Хөрс боловсруулах техник</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Шүршигч төхөөрөмж</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">ХАА-н дагалдах тоног төхөөрөмж</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Үр тариа хатаах төхөөрөмж</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Өвс, тэжээл бэлтгэх техник</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Экскаватор</a></li>
-              </ul>
-            </div>
-
-            {/* Column 2 - Branches */}
-            <div>
-              <h3 className="font-bold mb-4 text-green-400">САЛБАР</h3>
-              <div className="space-y-4 text-sm text-gray-300">
-                <div>
-                  <p className="font-medium mb-1 flex items-center gap-1">
-                    <MapPin className="w-4 h-4 text-green-400" />
-                    Улаанбаатар
-                  </p>
-                  <p className="text-gray-400 ml-5">
-                    СХД, Моносын уулзвараас 22-ын товчоо чиглэлд 600 метр, Чандмань Бар худалдааны төв
-                  </p>
-                  <p className="text-gray-400 ml-5">Утас: 91912205</p>
-                </div>
-                <div>
-                  <p className="font-medium mb-1 flex items-center gap-1">
-                    <MapPin className="w-4 h-4 text-green-400" />
-                    БНХАУ – Эрээн хот
-                  </p>
-                  <p className="text-gray-400 ml-5">
-                    Их уул тариалан техникийн борлуулалтын төв
-                  </p>
-                  <p className="text-gray-400 ml-5">Утас: 1754896652</p>
-                </div>
-                <div>
-                  <p className="font-medium mb-1 flex items-center gap-1">
-                    <MapPin className="w-4 h-4 text-green-400" />
-                    БНХАУ – Анхуй муж
-                  </p>
-                  <p className="text-gray-400 ml-5">
-                    Anhui Yimutian Agricultural Machinery Co.,LTD
-                  </p>
-                  <p className="text-gray-400 ml-5">Утас: 1835682899</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Column 3 - Contact */}
-            <div>
-              <h3 className="font-bold mb-4 text-green-400">ХОЛБОО БАРИХ</h3>
-              <div className="space-y-3 text-sm text-gray-300">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-green-400" />
-                  <span>+976 91912205</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-green-400" />
-                  <span>Baysaa.tang.company@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-3 mt-4">
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
-                    <Youtube className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer Bottom */}
-          <div className="border-t border-gray-700 pt-6">
-            <p className="text-center text-sm text-gray-400 mb-2">
-              FMWorld болон Anhui Yimutian Agricultural Machinery Co., Ltd компанийн Монгол дахь албан ёсны дилер
-            </p>
-            <p className="text-center text-sm text-gray-400">
-              © 2026 "Баясаа Танг" ХХК. Бүх эрх хуулиар хамгаалагдсан.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

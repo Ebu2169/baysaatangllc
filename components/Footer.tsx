@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Youtube } from "lucide-react";
 
+const facebookUrl = "https://www.facebook.com/profile.php?id=61557236625233";
+const phoneNumber = "+976 91912205";
+const phoneHref = "tel:+97691912205";
+const email = "Baysaa.tang.company@gmail.com";
+const emailHref = `mailto:${email}`;
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-8 md:py-12">
@@ -65,14 +71,14 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-300">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-green-400" />
-                <span>+976 91912205</span>
+                <a href={phoneHref} className="hover:text-green-400 transition-colors">{phoneNumber}</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-green-400" />
-                <span>Baysaa.tang.company@gmail.com</span>
+                <a href={emailHref} className="hover:text-green-400 transition-colors">{email}</a>
               </div>
               <div className="flex items-center gap-3 mt-4">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
+                <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors" aria-label="Facebook">
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
@@ -89,7 +95,7 @@ export default function Footer() {
             FMWorld болон Anhui Yimutian Agricultural Machinery Co., Ltd компанийн Монгол дахь албан ёсны дилер
           </p>
           <p className="text-center text-sm text-gray-400">
-            © 2026 "Баясаа Танг" ХХК. Бүх эрх хуулиар хамгаалагдсан.
+            © 2026 &quot;Баясаа Танг&quot; ХХК. Бүх эрх хуулиар хамгаалагдсан.
           </p>
         </div>
       </div>

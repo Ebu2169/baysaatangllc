@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, Mail, Phone, Globe } from "lucide-react";
+import { X, Mail, Phone } from "lucide-react";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -66,11 +66,15 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-gray-600">
                   <Mail className="w-5 h-5 text-green-600" />
-                  <span>Baysaa.tang.company@gmail.com</span>
+                  <a href="mailto:Baysaa.tang.company@gmail.com" className="hover:text-green-600 transition-colors">
+                    Baysaa.tang.company@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center gap-3 text-gray-600">
                   <Phone className="w-5 h-5 text-green-600" />
-                  <span>+976 91912205</span>
+                  <a href="tel:+97691912205" className="hover:text-green-600 transition-colors">
+                    +976 91912205
+                  </a>
                 </div>
                 <div className="flex items-center gap-3 text-gray-600">
                   <Phone className="w-5 h-5 text-green-600" />
