@@ -20,6 +20,42 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Quote Submissions & Admin Dashboard
+
+Product pages have a "Үнийн санал авах" (request a quote) form. Submissions are
+stored in Supabase and viewable at [`/admin`](http://localhost:3000/admin).
+
+### 1. Create the Supabase table
+
+In your Supabase project, open **SQL Editor → New query**, paste the contents of
+[`supabase/schema.sql`](supabase/schema.sql), and run it.
+
+### 2. Configure environment variables
+
+Create a `.env.local` file in the project root:
+
+```bash
+# Supabase → Project Settings → API
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+# Password used to log in to /admin
+ADMIN_PASSWORD=choose-a-strong-password
+```
+
+> The service-role key is only used in server-side API routes and is never sent
+> to the browser. Row Level Security is enabled on the table, so all access goes
+> through these server routes.
+
+### 3. Use it
+
+- Submit a quote from any product page.
+- Visit `/admin`, log in with `ADMIN_PASSWORD`, and view/manage submissions
+  (filter by status, mark as contacted/done, or delete).
+
+When deploying (e.g. Vercel), add the same three environment variables in the
+project settings.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -9,23 +9,46 @@ interface QuoteModalProps {
   productName: string;
 }
 
+const emptyForm = {
+  companyName: "",
+  fullName: "",
+  email: "",
+  phone: "",
+  message: "",
+};
+
 export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalProps) {
-  const [formData, setFormData] = useState({
-    companyName: "",
-    fullName: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(emptyForm);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Таны хүсэлт амжилттай илгээгдлээ!");
-    onClose();
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, productName }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Хүсэлт илгээхэд алдаа гарлаа.");
+      }
+
+      alert("Таны хүсэлт амжилттай илгээгдлээ!");
+      setFormData(emptyForm);
+      onClose();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Хүсэлт илгээхэд алдаа гарлаа.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -134,11 +157,15 @@ export default function QuoteModal({ isOpen, onClose, productName }: QuoteModalP
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                 />
               </div>
+              {error && (
+                <p className="text-sm text-red-600 text-center">{error}</p>
+              )}
               <button
                 type="submit"
-                className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors"
+                disabled={submitting}
+                className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                ХҮСЭЛТ ИЛГЭЭХ
+                {submitting ? "ИЛГЭЭЖ БАЙНА..." : "ХҮСЭЛТ ИЛГЭЭХ"}
               </button>
               <p className="text-xs text-gray-500 text-center">
                 Бид таны илгээсэн мэдээллийг бусад зориулалтаар ашиглахгүй, мөн гуравдагч этгээдэд хуваалцахгүй болно.
