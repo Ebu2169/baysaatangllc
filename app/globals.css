@@ -133,7 +133,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-1120px);
+    transform: translateX(-480px);
   }
 }
 
@@ -142,16 +142,16 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-1540px);
+    transform: translateX(-660px);
   }
 }
 
 .animate-scroll {
-  animation: scroll-mobile 20s linear infinite;
+  animation: scroll-mobile 9s linear infinite;
 }
 
 @media (min-width: 768px) {
   .animate-scroll {
-    animation: scroll-desktop 25s linear infinite;
+    animation: scroll-desktop 11s linear infinite;
   }
 }

@@ -81,7 +81,7 @@ export default function Home() {
         </div>
         <div className="relative w-full overflow-hidden group">
           <div className="flex animate-scroll group-hover:[animation-play-state:paused]">
-            {[...Array(4)].map((_, setIndex) => (
+            {[...Array(8)].map((_, setIndex) => (
               <div key={setIndex} className="flex shrink-0">
                 <a href="https://www.fmworldagri.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 md:grayscale md:hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
                   <Image src="/partner_logos/fmworldlogo.jpeg" alt="FMWorld" width={150} height={60} className="object-contain max-h-full max-w-full" />
@@ -92,45 +92,8 @@ export default function Home() {
                 <a href="https://www.masseyferguson.com/en.html" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 md:grayscale md:hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
                   <Image src="/partner_logos/fergielogo.png" alt="Massey Ferguson" width={150} height={60} className="object-contain max-h-full max-w-full" />
                 </a>
-                <a href="http://www.ytocorp.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 md:grayscale md:hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
-                  <Image src="/partner_logos/ytologo.jpeg" alt="YTO" width={180} height={80} className="object-contain max-h-[90%] max-w-[90%] scale-125" />
-                </a>
-                <a href="https://www.deere.com/en/index.html" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 md:grayscale md:hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
-                  <Image src="/partner_logos/JDlogo.png" alt="John Deere" width={150} height={60} className="object-contain max-h-full max-w-full" />
-                </a>
-                <a href="https://www.dongfeng-global.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 md:grayscale md:hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
-                  <Image src="/partner_logos/Dongfenglogo.png" alt="Dongfeng" width={150} height={60} className="object-contain max-h-full max-w-full" />
-                </a>
-                <a href="https://en.zoomlion.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 md:px-12 md:grayscale md:hover:grayscale-0 transition-all duration-300 w-[160px] md:w-[220px] h-[70px] md:h-[100px]">
-                  <Image src="/partner_logos/zoomlionlogo.png" alt="Zoomlion" width={150} height={60} className="object-contain max-h-full max-w-full" />
-                </a>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Feature Section - Greenhouse */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=600&fit=crop')"}}>
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative container mx-auto px-4 h-full flex items-center">
-          <div className="text-white max-w-2xl">
-            <span className="text-xs md:text-sm font-medium mb-2 md:mb-4 block">ДЭЛХИЙ ДАХИНЫ</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
-              Оюу Толгой ХХК-ийн<br />
-              Мод Үржүүлгийн<br />
-              Газар
-            </h2>
-            <p className="mb-4 md:mb-6 text-sm md:text-lg leading-relaxed">
-              БЗДс- Монгол улсын баялаг эрдэс<br className="hidden md:block" />
-              бүхий бүсэд байрладаг. Манай компани<br className="hidden md:block" />
-              нүүл 2026 оны 4-р улиралаас<br className="hidden md:block" />
-              эхэлж хүлээн авч ургуулах ажлыг<br className="hidden md:block" />
-              эхлүүлэх болно.
-            </p>
-            <button className="bg-green-600 text-white px-6 md:px-8 py-2 md:py-3 rounded hover:bg-green-700 text-sm md:text-base">
-              Дэлгэрэнгүй →
-            </button>
           </div>
         </div>
       </section>

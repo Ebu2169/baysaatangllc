@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Youtube } from "lucide-react";
 
 const facebookUrl = "https://www.facebook.com/profile.php?id=61557236625233";
-const phoneNumber = "+976 91912205";
-const phoneHref = "tel:+97691912205";
+const phones = [
+  { label: "+976 91912205", href: "tel:+97691912205" },
+  { label: "+976 99271235", href: "tel:+97699271235" },
+];
 const email = "Baysaa.tang.company@gmail.com";
 const emailHref = `mailto:${email}`;
 
@@ -40,27 +42,7 @@ export default function Footer() {
                 <p className="text-gray-400 ml-5">
                   СХД, Моносын уулзвараас 22-ын товчоо чиглэлд 600 метр, Чандмань Бар худалдааны төв
                 </p>
-                <p className="text-gray-400 ml-5">Утас: 91912205</p>
-              </div>
-              <div>
-                <p className="font-medium mb-1 flex items-center gap-1">
-                  <MapPin className="w-4 h-4 text-green-400" />
-                  БНХАУ – Эрээн хот
-                </p>
-                <p className="text-gray-400 ml-5">
-                  Их уул тариалан техникийн борлуулалтын төв
-                </p>
-                <p className="text-gray-400 ml-5">Утас: 1754896652</p>
-              </div>
-              <div>
-                <p className="font-medium mb-1 flex items-center gap-1">
-                  <MapPin className="w-4 h-4 text-green-400" />
-                  БНХАУ – Анхуй муж
-                </p>
-                <p className="text-gray-400 ml-5">
-                  Anhui Yimutian Agricultural Machinery Co.,LTD
-                </p>
-                <p className="text-gray-400 ml-5">Утас: 1835682899</p>
+                <p className="text-gray-400 ml-5">Утас: 91912205, 99271235</p>
               </div>
             </div>
           </div>
@@ -69,10 +51,12 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-4 text-green-400">ХОЛБОО БАРИХ</h3>
             <div className="space-y-3 text-sm text-gray-300">
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-green-400" />
-                <a href={phoneHref} className="hover:text-green-400 transition-colors">{phoneNumber}</a>
-              </div>
+              {phones.map((phone) => (
+                <div key={phone.href} className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-green-400" />
+                  <a href={phone.href} className="hover:text-green-400 transition-colors">{phone.label}</a>
+                </div>
+              ))}
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-green-400" />
                 <a href={emailHref} className="hover:text-green-400 transition-colors">{email}</a>
@@ -92,7 +76,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 pt-6">
           <p className="text-center text-sm text-gray-400 mb-2">
-            FMWorld болон Anhui Yimutian Agricultural Machinery Co., Ltd компанийн Монгол дахь албан ёсны дилер
+            FMWORLD болон Anhui Yimutian Agricultural Machinery компанийн Монгол дахь албан ёсны дистрибьютер
           </p>
           <p className="text-center text-sm text-gray-400">
             © 2026 &quot;Баясаа Танг&quot; ХХК. Бүх эрх хуулиар хамгаалагдсан.
